@@ -1,6 +1,7 @@
 const graphql = require('graphql');
 const _ = require('lodash');
 const AuthorType = require('../type/authorType');
+const authorSchema = require('../../models/author');
 
 const { GraphQLID, GraphQLList } = graphql;
 

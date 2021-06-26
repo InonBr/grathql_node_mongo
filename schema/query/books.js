@@ -1,6 +1,7 @@
 const graphql = require('graphql');
 const _ = require('lodash');
 const BookType = require('../type/bookType');
+const bookSchema = require('../../models/books');
 
 const { GraphQLID } = graphql;
 
