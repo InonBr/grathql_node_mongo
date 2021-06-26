@@ -2,13 +2,13 @@ const graphql = require('graphql');
 const authorSchema = require('../../models/author');
 const AuthorType = require('../type/authorType');
 
-const { GraphQLString, GraphQLInt } = graphql;
+const { GraphQLString, GraphQLInt, GraphQLNonNull } = graphql;
 
 const addAuthor = {
   type: AuthorType,
   args: {
-    name: { type: GraphQLString },
-    age: { type: GraphQLInt },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    age: { type: new GraphQLNonNull(GraphQLInt) },
   },
 
   resolve(parent, args) {

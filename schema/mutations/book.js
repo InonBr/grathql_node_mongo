@@ -2,14 +2,14 @@ const graphql = require('graphql');
 const bookSchema = require('../../models/books');
 const bookType = require('../type/bookType');
 
-const { GraphQLString, GraphQLID } = graphql;
+const { GraphQLString, GraphQLID, GraphQLNonNull } = graphql;
 
 const addBook = {
   type: bookType,
   args: {
-    name: { type: GraphQLString },
-    genre: { type: GraphQLString },
-    authorId: { type: GraphQLID },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    genre: { type: new GraphQLNonNull(GraphQLString) },
+    authorId: { type: new GraphQLNonNull(GraphQLID) },
   },
 
   resolve(parent, args) {
