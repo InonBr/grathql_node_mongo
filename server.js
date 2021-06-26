@@ -1,11 +1,22 @@
 const express = require('express');
+const { graphqlHTTP } = require('express-graphql');
+const cors = require('cors');
+const schema = require('./schema/schema');
+
 const app = express();
 const connectDB = require('./db/db');
 const port = 5000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use(cors());
+app.use(express.json());
+
+app.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+);
 
 connectDB().then(() => {
   console.log('🔵 MongoDB connected...');
