@@ -3,6 +3,7 @@ const _ = require('lodash');
 const getBookByid = require('./query/books');
 const { getAuthorByid, getAllAuthors } = require('./query/author');
 const addAuthor = require('./mutations/author');
+const addBook = require('./mutations/book');
 
 const { GraphQLObjectType, GraphQLSchema } = graphql;
 
@@ -19,6 +20,7 @@ const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     addAuthor,
+    addBook,
   },
 });
 
