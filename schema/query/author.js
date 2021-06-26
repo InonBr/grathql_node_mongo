@@ -27,4 +27,4 @@ const getAllAuthors = {
   },
 };
 
-module.exports = { getAuthorByid, getAllAuthors };
+module.exports = { getAuthorByid, getAllAuthors, dummyAuthors };
