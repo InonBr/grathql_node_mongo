@@ -1,5 +1,4 @@
 const graphql = require('graphql');
-const AuthorType = require('./authorType');
 const authorSchema = require('../../models/author');
 const _ = require('lodash');
 
@@ -21,3 +20,5 @@ const BookType = new GraphQLObjectType({
 });
 
 module.exports = BookType;
+
+const AuthorType = require('./authorType');
