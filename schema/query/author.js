@@ -3,12 +3,13 @@ const _ = require('lodash');
 const AuthorType = require('../type/authorType');
 const authorSchema = require('../../models/author');
 
-const { GraphQLID, GraphQLList } = graphql;
+const { GraphQLID, GraphQLList, GraphQLNonNull } = graphql;
 
 const getAuthorByid = {
   type: AuthorType,
-  args: { id: { type: GraphQLID } },
-  resolve(parent, args) {
+  args: { id: { type: new GraphQLNonNull(GraphQLID) } },
+  resolve(parent, args, req) {
+    console.log(req.random);
     return authorSchema.findById(args.id);
   },
 };

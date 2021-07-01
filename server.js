@@ -2,13 +2,15 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const cors = require('cors');
 const schema = require('./schema/schema');
+const connectDB = require('./db/db');
+const testMiddle = require('./middleware/testMiddle');
 
 const app = express();
-const connectDB = require('./db/db');
 const port = 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(testMiddle);
 
 app.use(
   '/graphql',

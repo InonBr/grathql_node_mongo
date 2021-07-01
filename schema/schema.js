@@ -1,6 +1,6 @@
 const graphql = require('graphql');
 const _ = require('lodash');
-const getBookByid = require('./query/books');
+const { getBookByid, getAllBooks } = require('./query/books');
 const { getAuthorByid, getAllAuthors } = require('./query/author');
 const addAuthor = require('./mutations/author');
 const addBook = require('./mutations/book');
@@ -10,6 +10,7 @@ const { GraphQLObjectType, GraphQLSchema } = graphql;
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
+    getAllBooks,
     getBookByid,
     getAuthorByid,
     getAllAuthors,

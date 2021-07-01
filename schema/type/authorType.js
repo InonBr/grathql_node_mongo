@@ -1,15 +1,21 @@
 const graphql = require('graphql');
 const bookSchema = require('../../models/books');
 
-const { GraphQLObjectType, GraphQLString, GraphQLID, GraphQLInt, GraphQLList } =
-  graphql;
+const {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLID,
+  GraphQLInt,
+  GraphQLList,
+  GraphQLNonNull,
+} = graphql;
 
 const AuthorType = new GraphQLObjectType({
   name: 'Author',
   fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    age: { type: GraphQLInt },
+    id: { type: new GraphQLNonNull(GraphQLID) },
+    name: { type: new GraphQLNonNull(GraphQLString) },
+    age: { type: new GraphQLNonNull(GraphQLInt) },
     books: {
       type: new GraphQLList(BookType),
       resolve(parent, args) {
